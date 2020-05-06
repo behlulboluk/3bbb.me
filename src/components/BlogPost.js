@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import moment from 'moment';
 
 import { Link } from 'react-router-dom';
@@ -6,8 +6,13 @@ import { Row, Col } from 'antd';
 
 import blogpost from '../BlogPosts/variable';
 import { Tag } from 'antd';
+import ReactGA from 'react-ga';
 
 const BlogPost = () => {
+  useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  });
+  // console.log('window.location.pathname post', window.location.pathname);
   return (
     <>
       <div className="tags">

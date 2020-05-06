@@ -4,10 +4,12 @@ import ReactMarkdown from 'react-markdown';
 import Highlights from './Highlights';
 import blogpost from '../BlogPosts/variable';
 import moment from 'moment';
+import ReactGA from 'react-ga';
 
 const Post = (props) => {
   const [terms, setTerms] = useState('');
   useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
     const post = require(`../BlogPosts/${props.match.params.id}.mdx`);
     fetch(post)
       .then((response) => response.text())
@@ -15,6 +17,8 @@ const Post = (props) => {
         setTerms(data);
       });
   });
+  // console.log('window.location.pathname post', window.location.pathname);
+
   const image = require(`../BlogPosts/${props.match.params.id}.jpg`);
   const date = blogpost.filter((res) => res.id === props.match.params.id);
   return (

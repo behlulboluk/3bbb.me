@@ -5,18 +5,17 @@ import Footer from './components/Footer';
 import BlogPost from './components/BlogPost';
 import Post from './components/Post';
 
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-
-import ReactGA from 'react-ga';
+import { Router, Route, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 const history = createBrowserHistory();
 
-history.listen((location) => {
-  ReactGA.set({ page: location.pathname }); // Update the user's current page
-  ReactGA.pageview(location.pathname); // Record a pageview for the given page
-});
+// history.listen((location) => {
+//   ReactGA.set({ page: location.pathname + location.search }); // Update the user's current page
+//   ReactGA.pageview(location.pathname + location.search); // Record a pageview for the given page
+// });
+// console.log('location', history);
 
-function App() {
+const App = () => {
   return (
     <>
       <div className="App">
@@ -25,8 +24,10 @@ function App() {
             <Header />
 
             <React.Fragment>
-              <Route exact path="/" component={BlogPost} />
-              <Route path="/post/:id" component={Post} />
+              <Switch>
+                <Route exact path="/" component={BlogPost} />
+                <Route path="/post/:id" component={Post} />
+              </Switch>
             </React.Fragment>
           </Router>
         </React.Fragment>
@@ -35,6 +36,6 @@ function App() {
       <Footer />
     </>
   );
-}
+};
 
 export default App;
