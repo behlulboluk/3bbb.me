@@ -1,49 +1,53 @@
 import React, { useState, useEffect } from 'react';
-// import {
-//   MediumCircleFilled,
-//   TwitterCircleFilled,
-//   LinkedinFilled,
-//   GithubFilled
-// } from '@ant-design/icons';
 import { Row, Col } from 'antd';
 import ReactMarkdown from 'react-markdown';
-import { Link } from 'react-router-dom';
-
-import marked from 'marked';
-import Markdown from 'markdown-to-jsx';
+import Highlights from './Highlights';
+import blogpost from '../BlogPosts/variable';
+import moment from 'moment';
 
 const Post = (props) => {
   const [terms, setTerms] = useState('');
-  //   componentWillMount() {
-  //     fetch(post)
-  //       .then((response) => response.text())
-  //       .then((text) => {
-  //         this.setState({ terms: text });
-  //       });
-  //   }
   useEffect(() => {
     const post = require(`../BlogPosts/${props.match.params.id}.mdx`);
     fetch(post)
       .then((response) => response.text())
       .then((data) => {
-        console.log('text:', data);
         setTerms(data);
       });
   });
-
+  const image = require(`../BlogPosts/${props.match.params.id}.jpg`);
+  const date = blogpost.filter((res) => res.id === props.match.params.id);
   return (
     <>
-      {/* <div style={{ color: 'white' }}>
-              <ReactMarkdown source={input} escapeHtml={false} />
-            </div> */}
-      {/* <Markdown>{this.state.terms}</Markdown> */}
-      {/* <Link to={'/'}>
-        <div className="Back-Button">Back</div>
-      </Link> */}
-      <div className="blog-post">
-        <ReactMarkdown source={terms} />
-        {/* <Markdown>{this.state.terms}</Markdown> */}
-      </div>
+      <Row type="flex" justify="center">
+        <Col xs={24} sm={24} md={20} lg={14} xl={14}>
+          <div className="blog-post-image">
+            <div
+              className="postImage"
+              style={{
+                backgroundImage: `url(${image})`
+              }}
+            ></div>
+          </div>
+          <div className="postDate">published {moment(date.date).format('MMMM DD YYYY')}</div>
+        </Col>
+      </Row>
+
+      <Row type="flex" justify="center">
+        <Col xs={24} sm={24} md={20} lg={14} xl={14}>
+          <div className="blog-post">
+            {/* <img
+              className="postImage"
+              src={image}
+              // style={{
+              //   backgroundImage: `url(${image})`
+              // }}
+            ></img> */}
+
+            <ReactMarkdown source={terms} renderers={{ code: Highlights }} />
+          </div>
+        </Col>
+      </Row>
     </>
   );
 };

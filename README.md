@@ -1,3 +1,15 @@
+## TODO
+
+- google analytics
+- post cards date +
+- pre tag blockquote highlight + 
+- aws and js icon
+- detail page image +
+- writings
+    - userpool recurvice
+    - blog site from strach
+    - google map with react
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
