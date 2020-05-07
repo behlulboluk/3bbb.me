@@ -16,13 +16,29 @@ const BlogPost = () => {
   return (
     <>
       <div className="tags">
+        <div className="categoryAbout">
+          <code>I am interested in</code>
+        </div>
         <Tag color="goldenrod" className="category">
           <code>JS</code>
+        </Tag>
+        <Tag color="darkblue" className="category">
+          <code>React</code>
+        </Tag>
+        <Tag color="deeppink" className="category">
+          <code>GraphQL</code>
+        </Tag>
+        <Tag color="gray" className="category">
+          <code>Image Processing</code>
         </Tag>
         <Tag color="#ec912c" className="category">
           <code>AWS</code>
         </Tag>
+        <div className="categoryAbout">
+          <code> and hope I'll writing post about them</code>
+        </div>
       </div>
+
       <Row type="flex" justify="center">
         {blogpost.map((res, index) => {
           const image = require(`../BlogPosts/${res.id}.jpg`);

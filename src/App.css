@@ -63,7 +63,7 @@
   border-color: #111d2c;
 }
 .tags {
-  margin: 40px;
+  margin: 10px;
   text-align: center;
 }
 .footer {
@@ -118,14 +118,17 @@
   margin-bottom: 0;
 }
 
-
+.categoryAbout {
+  font-size: 1.1em;
+  color: dimgray;
+  padding: 0.2em;
+  margin-bottom: 7px;
+}
 .category {
   font-size: 1.3em;
   padding: 0.4em;
-  color: white;
-  /* padding-top: 3px;
-  padding-bottom: 3px;
-  margin-bottom: 3px; */
+  color: white;  
+  margin-bottom: 7px;
 }
 
 .blog-post-card {
