@@ -35,7 +35,7 @@ const BlogPost = () => {
           <code>AWS</code>
         </Tag>
         <div className="categoryAbout">
-          <code> and hope I'll writing post about them</code>
+          <code> and hope I'll write post about them</code>
         </div>
       </div>
 
