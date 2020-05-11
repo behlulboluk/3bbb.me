@@ -1,0 +1,75 @@
+# .split(), .map() and .join() Array and String standard methods in JS
+ 
+I saw the question in [binarysearch.io](https://binarysearch.io/) with **easy** tag. The question is simple but I show you two different way in JS.
+
+- First: with For Loop
+- Second: with .split(), .map() and .join() methods
+
+
+## The question:
+
+We have two string valueable, **let s0="abc" and let s1="xyz", s1 valueable can be "x" or "xy" etc and no longer to s1**. The question will solve in function.
+The function return **axbycz** if values are **let s0="abc" and let s1="xyz"**, The function return **axbyc** if values are **let s0="abc" and let s1="xy"**.
+
+## First: with For Loop
+
+This version so long for Second but I think more clear code and easy for maintenance.
+
+```
+let s0 = "abc";
+let s1 = "xyz";
+
+let result = "";
+const iterativeAdd = (firstString, secondString) => {
+  for (i in firstString) {
+    if (firstString[i] != undefined && secondString[i] != undefined) {
+      result = result + firstString[i] + secondString[i];
+    } else {
+      result = result + firstString[i];
+    }
+  }
+  console.log(result); // result = axbycz
+  return result;
+};
+iterativeAdd(s0, s1);
+```
+
+## Second: with .split(), .map() and .join() methods
+
+**.split()**, **.map()** and **.join()** methods are Array and String global objects methods in JS.
+
+if I explain thats methods with briefly. Because long and perfect explain in [MDN web docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects).
+
+- .split() is String method that return an array. **`let s0 = "abc", str.split("") return ["a","b", "c"]`**
+
+- .map() is Array method that return an array. **`let arr0 = ["a", "b", "c"], arr.map((res, index) => console.log(res, index)) return a 0, b 1, c 2`**
+
+- .join() is Array method that return and an String. **`let arrRes = ["ax", "by", "cz"], arrRes.join("") return "axbycz"`**
+
+And solution for question with js global methods:
+
+```
+let s0 = "abc";
+let s1 = "xyz";
+
+const iterativeAdd = (s0, s1) => {
+  let result = s0.split("").map((res, i) => res + (s1[i] != undefined ? s1[i] : "")).join("");
+  console.log(result);
+  return result;
+};
+iterativeAdd(s0, s1);
+```
+
+Step by step: 
+
+- `s0.split("") return ["a", "b", "c"]`
+
+- `["a", "b", "c"].map((res, i) => res + (s1[i] != undefined ? s1[i] : "")) return ["ax", "by", "cz"]`
+
+- `["ax", "by", "cz"].join("") return "axbycz"`
+
+----
+
+> Thanks for reading if you see any wrong or deprecated situation, you can contact from icons in header with me.
+
+----

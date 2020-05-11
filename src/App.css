@@ -197,6 +197,10 @@
   border: solid;
   border-radius: 0.3em;
 }
+.blog-post a {
+  color: brown;
+  font-size: 1.2em;
+}
 /* .blog-post pre code{
   padding: 1em 1em 1em 1em;
 } */
