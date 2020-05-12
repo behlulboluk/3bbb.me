@@ -4,7 +4,7 @@ const variable = [
     category: 'JS',
     category_color: 'goldenrod',
     title: '.split(), .map() and .join() Array and String methods in JS',
-    date: '2020-05-11T12:36:33.972Z'
+    date: '2020-05-10T12:36:33.972Z'
   },
   {
     id: 'e28efc36-b164-475a-a9f4-e3813a78cc90',

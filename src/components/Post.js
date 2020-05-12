@@ -20,7 +20,7 @@ const Post = (props) => {
   // console.log('window.location.pathname post', window.location.pathname);
 
   const image = require(`../BlogPosts/${props.match.params.id}.jpg`);
-  const date = blogpost.filter((res) => res.id === props.match.params.id);
+  const data = blogpost.filter((res) => res.id === props.match.params.id);
   return (
     <>
       <Row type="flex" justify="center">
@@ -33,7 +33,7 @@ const Post = (props) => {
               }}
             ></div>
           </div>
-          <div className="postDate">published {moment(date.date).format('MMMM DD YYYY')}</div>
+          <div className="postDate">published {moment(data[0].date).format('MMMM DD YYYY')}</div>
         </Col>
       </Row>
 
